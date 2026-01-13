@@ -1,15 +1,15 @@
-function getHumanChoice() {
-  return prompt("Choose Rock Paper or Scissors");
-}
-
-function getComputerChoice() {
-  var choices = ["Rock", "Paper", "Scissors"];
-  var choice = choices[Math.floor(Math.random() * 3)];
-  console.log(choice);
-  return choice;
-}
-
 function playGame() {
+  function getHumanChoice() {
+    return prompt("Choose Rock Paper or Scissors");
+  }
+
+  function getComputerChoice() {
+    var choices = ["Rock", "Paper", "Scissors"];
+    var choice = choices[Math.floor(Math.random() * 3)];
+    console.log(choice);
+    return choice;
+  }
+
   function playRound(humanChoice, computerChoice) {
     humanChoice.toLowerCase();
     computerChoice.toLowerCase();
@@ -51,11 +51,22 @@ function playGame() {
 
   let humanScore = 0;
   let computerScore = 0;
-  const number_of_rounds = 5;
+  let number_of_rounds = 5;
 
   while (number_of_rounds > 0) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
+    number_of_rounds = number_of_rounds - 1;
   }
+
+  humanScore > computerScore
+    ? console.log("You won !")
+    : humanScore < computerScore
+    ? console.log("You lost !")
+    : console.log("Miraculos Draw !");
+
+  console.log("Game Over !");
 }
+
+playGame();
